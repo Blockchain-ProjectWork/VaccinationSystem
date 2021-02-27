@@ -10,9 +10,5 @@ package vaccinationsystem;
  * @author nehit
  */
 public class Aadhar {
-<<<<<<< HEAD
-    int a;
-=======
->>>>>>> origin/main
     
 }
