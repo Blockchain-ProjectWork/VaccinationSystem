@@ -10,5 +10,6 @@ package vaccinationsystem;
  * @author nehit
  */
 public class Aadhar {
+    int a;
     
 }
