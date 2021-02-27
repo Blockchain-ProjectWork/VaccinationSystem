@@ -15,7 +15,12 @@ public class BaseClass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try{
+            GenerateKeys g = new GenerateKeys(1024, "RSA");
+            g.KeyGenerator();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     
 }
