@@ -8,7 +8,17 @@
  *
  * @author dell
  */
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.util.Random;
+import javax.swing.JOptionPane;
 public class NewJFrame extends javax.swing.JFrame {
+    int OTP;
 
     /** Creates new form NewJFrame */
     public NewJFrame() {
@@ -153,11 +163,54 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+if(Integer.parseInt(txtVerOTP.getText())==OTP){
+JOptionPane.showMessageDialog(null, "you are login successfully");
+this.setVisible(false); //hide current jframe form
+new home().setVisible(true); //open new jframe form having name home
+ 
+//NOTE: TO ADD NEW FORM (home)  REPEAT STEP 3
+}else{
+JOptionPane.showMessageDialog(null, "wrong OTP");
+}        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+try {
+// Construct data
+String apiKey = "apikey=" + "Gw6mB9i+ObQ-IltLpIrlSPZl8mTH3QPQPS00O13RpC";
+Random rand = new Random();
+OTP=rand.nextInt(999999);
+String name = txtName.getText();
+ 
+String message = "&amp;message=" + "Hey "+name+ " your OTP IS "+OTP;
+String sender = "&amp;sender=" + "your_sender_name";
+String numbers = "&amp;numbers=" +txtPhone.getText();
+ 
+// Send data
+HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
+String data = apiKey + numbers + message + sender;
+conn.setDoOutput(true);
+conn.setRequestMethod("POST");
+conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
+conn.getOutputStream().write(data.getBytes("UTF-8"));
+final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+final StringBuffer stringBuffer = new StringBuffer();
+String line;
+while ((line = rd.readLine()) != null) {
+stringBuffer.append(line);
+}
+rd.close();
+JOptionPane.showConfirmDialog(null, "OTP send Successfully");
+ 
+//return stringBuffer.toString();
+} catch (Exception e) {
+JOptionPane.showMessageDialog(null,"Error SMS "+e);
+//return "Error "+e;
+JOptionPane.showMessageDialog(null, "error "+e);
+ 
+ 
+}
+}        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
