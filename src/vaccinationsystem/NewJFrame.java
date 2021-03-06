@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package vaccinationsystem;
+
+import java.util.HashMap;
 
 /**
  *
@@ -24,8 +27,6 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame() {
         initComponents();
     }
-
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -175,42 +176,41 @@ JOptionPane.showMessageDialog(null, "wrong OTP");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-try {
-// Construct data
-String apiKey = "apikey=" + "Gw6mB9i+ObQ-IltLpIrlSPZl8mTH3QPQPS00O13RpC";
-Random rand = new Random();
-OTP=rand.nextInt(999999);
-String name = txtName.getText();
- 
-String message = "&amp;message=" + "Hey "+name+ " your OTP IS "+OTP;
-String sender = "&amp;sender=" + "your_sender_name";
-String numbers = "&amp;numbers=" +txtPhone.getText();
- 
-// Send data
-HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
-String data = apiKey + numbers + message + sender;
-conn.setDoOutput(true);
-conn.setRequestMethod("POST");
-conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
-conn.getOutputStream().write(data.getBytes("UTF-8"));
-final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-final StringBuffer stringBuffer = new StringBuffer();
-String line;
-while ((line = rd.readLine()) != null) {
-stringBuffer.append(line);
-}
-rd.close();
-JOptionPane.showConfirmDialog(null, "OTP send Successfully");
- 
-//return stringBuffer.toString();
-} catch (Exception e) {
-JOptionPane.showMessageDialog(null,"Error SMS "+e);
-//return "Error "+e;
-JOptionPane.showMessageDialog(null, "error "+e);
- 
- 
-}
-}        // TODO add your handling code here:
+        try {
+        // Construct data
+        String apiKey = "apikey=" + "Gw6mB9i+ObQ-IltLpIrlSPZl8mTH3QPQPS00O13RpC";
+        Random rand = new Random();
+        OTP=rand.nextInt(999999);
+        String name = jTextField1.getText();
+
+        String message = "&amp;message=" + "Hey "+name+ " your OTP IS "+OTP;
+        String sender = "&amp;sender=" + "your_sender_name";
+        String numbers = "&amp;numbers=" +txtPhone.getText();
+
+        // Send data
+        HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
+        String data = apiKey + numbers + message + sender;
+        conn.setDoOutput(true);
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
+        conn.getOutputStream().write(data.getBytes("UTF-8"));
+        final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        final StringBuffer stringBuffer = new StringBuffer();
+        String line;
+        while ((line = rd.readLine()) != null) {
+        stringBuffer.append(line);
+        }
+        rd.close();
+        JOptionPane.showConfirmDialog(null, "OTP send Successfully");
+
+        //return stringBuffer.toString();
+        } catch (Exception e) {
+        JOptionPane.showMessageDialog(null,"Error SMS "+e);
+        //return "Error "+e;
+        JOptionPane.showMessageDialog(null, "error "+e);
+
+
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -239,7 +239,8 @@ JOptionPane.showMessageDialog(null, "error "+e);
             java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -247,6 +248,8 @@ JOptionPane.showMessageDialog(null, "error "+e);
             }
         });
     }
+
+    private HashMap<String, Long> lookup = new HashMap<String, Long>();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -259,5 +262,5 @@ JOptionPane.showMessageDialog(null, "error "+e);
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
-
 }
+
