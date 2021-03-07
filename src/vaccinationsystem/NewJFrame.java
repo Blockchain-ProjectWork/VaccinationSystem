@@ -11,16 +11,9 @@ import java.util.HashMap;
  *
  * @author dell
  */
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+
 import java.util.logging.Level; 
 import java.util.logging.Logger; 
-import java.util.logging.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.Random;
 import javax.swing.JOptionPane;
 public class NewJFrame extends javax.swing.JFrame {
@@ -200,40 +193,19 @@ public class NewJFrame extends javax.swing.JFrame {
         HashMap<String, Long> lookup = new Aadhar().setData();
         if(lookup.containsKey(aadharNum.getText())){
             LOGGER.log(Level.INFO, "INSIDE LOOKUP");
-            try {
-            LOGGER.log(Level.INFO, "INSIDE TRY");
-            // Construct data
-            String apiKey = "apikey=" + "Gw6mB9i+ObQ-IltLpIrlSPZl8mTH3QPQPS00O13RpC";
             Random rand = new Random();
             OTP=rand.nextInt(999999);
             String name = txtName.getText();
-            String message = "&message=" + "Hey "+name+ " your OTP IS "+OTP;
-            String sender = "&sender=" + "VCHAIN";
-            long num = lookup.get(aadharNum.getText());
-            String number = "&numbers=" + String.valueOf(num);
-            String data = apiKey + number + message + sender;
-            LOGGER.log(Level.INFO, "Data = "+data);
-            HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
+            String numbers = "+"+lookup.get(aadharNum.getText()).toString();
+            try{
+                SendSMS se = new SendSMS();
+                String msg = se.send(numbers, String.valueOf(OTP) , name);
+                JOptionPane.showMessageDialog(null, "OTP Sent Successfully");
+            }catch(Exception e){
+                LOGGER.log(Level.SEVERE, e.getMessage());
+                JOptionPane.showMessageDialog(null, "Failed");
+            }
             
-            conn.setDoOutput(true);
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
-            conn.getOutputStream().write(data.getBytes("UTF-8"));
-            final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            final StringBuffer stringBuffer = new StringBuffer();
-            String line;
-            while ((line = rd.readLine()) != null) {
-            stringBuffer.append(line);
-            }
-            rd.close();
-            JOptionPane.showMessageDialog(null, "OTP send Successfully");
-
-            //return stringBuffer.toString();
-            } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error SMS "+e);
-            //return "Error "+e;
-            JOptionPane.showMessageDialog(null, "error "+e);
-            }
         }else{
             JOptionPane.showMessageDialog(null, "NO SUCH RECORD FOUND");
         }
