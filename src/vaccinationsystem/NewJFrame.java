@@ -192,8 +192,8 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_VerifyButtonActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        
-        if(lookup.containsKey(txtVerOTP.getText())){
+        HashMap<String, Long> lookup = new Aadhar().setData();
+        if(lookup.containsKey(aadharNum.getText())){
             
             try {
             // Construct data
@@ -267,7 +267,6 @@ public class NewJFrame extends javax.swing.JFrame {
         });
     }
 
-    private HashMap<String, Long> lookup = new HashMap<String, Long>();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;
