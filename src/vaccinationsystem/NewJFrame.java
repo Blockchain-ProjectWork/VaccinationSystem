@@ -39,10 +39,10 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        txtPhone = new javax.swing.JTextField();
+        aadharNum = new javax.swing.JTextField();
         txtVerOTP = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        LoginButton = new javax.swing.JButton();
+        VerifyButton = new javax.swing.JButton();
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -73,9 +73,9 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        txtPhone.addActionListener(new java.awt.event.ActionListener() {
+        aadharNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPhoneActionPerformed(evt);
+                aadharNumActionPerformed(evt);
             }
         });
 
@@ -85,17 +85,17 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("LOGIN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        LoginButton.setText("LOGIN");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                LoginButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("VERIFY");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        VerifyButton.setText("VERIFY");
+        VerifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                VerifyButtonActionPerformed(evt);
             }
         });
 
@@ -110,7 +110,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
                             .add(jLabel2)
                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                            .add(txtPhone))
+                            .add(aadharNum))
                         .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
                             .add(jLabel1)
                             .add(72, 72, 72)
@@ -123,8 +123,8 @@ public class NewJFrame extends javax.swing.JFrame {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(VerifyButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(LoginButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(62, 62, 62))
         );
         jPanel1Layout.setVerticalGroup(
@@ -137,15 +137,15 @@ public class NewJFrame extends javax.swing.JFrame {
                 .add(44, 44, 44)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
-                    .add(txtPhone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(aadharNum, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
-                .add(jButton1)
+                .add(LoginButton)
                 .add(22, 22, 22)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(txtVerOTP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
-                .add(jButton2)
+                .add(VerifyButton)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -173,15 +173,15 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
-    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
+    private void aadharNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aadharNumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneActionPerformed
+    }//GEN-LAST:event_aadharNumActionPerformed
 
     private void txtVerOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerOTPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtVerOTPActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void VerifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerifyButtonActionPerformed
         if(Integer.parseInt(txtVerOTP.getText())==OTP){
             JOptionPane.showMessageDialog(null, "you are login successfully");
 
@@ -189,40 +189,47 @@ public class NewJFrame extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "wrong OTP");
         }        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_VerifyButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-    // Construct data
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        
+        if(lookup.containsKey(txtVerOTP.getText())){
+            
+            try {
+            // Construct data
             String apiKey = "apikey=" + "Gw6mB9i+ObQ-IltLpIrlSPZl8mTH3QPQPS00O13RpC";
             Random rand = new Random();
             OTP=rand.nextInt(999999);
             String name = txtName.getText();
+            String message = "&amp;message=" + "Hey "+name+ " your OTP IS "+OTP;
+            String sender = "&amp;sender=" + "your_sender_name";
+            long num = lookup.get(txtVerOTP.getText());
+            HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
+            String data = apiKey + num + message + sender;
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
+            conn.getOutputStream().write(data.getBytes("UTF-8"));
+            final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            final StringBuffer stringBuffer = new StringBuffer();
+            String line;
+            while ((line = rd.readLine()) != null) {
+            stringBuffer.append(line);
+            }
+            rd.close();
+            JOptionPane.showMessageDialog(null, "OTP send Successfully");
 
-HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
-String data = apiKey + numbers + message + sender;
-conn.setDoOutput(true);
-conn.setRequestMethod("POST");
-conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
-conn.getOutputStream().write(data.getBytes("UTF-8"));
-final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-final StringBuffer stringBuffer = new StringBuffer();
-String line;
-while ((line = rd.readLine()) != null) {
-stringBuffer.append(line);
-}
-rd.close();
-JOptionPane.showMessageDialog(null, "OTP send Successfully");
- 
-//return stringBuffer.toString();
-} catch (Exception e) {
-JOptionPane.showMessageDialog(null,"Error SMS "+e);
-//return "Error "+e;
-JOptionPane.showMessageDialog(null, "error "+e);
-
-
-        }       // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+            //return stringBuffer.toString();
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error SMS "+e);
+            //return "Error "+e;
+            JOptionPane.showMessageDialog(null, "error "+e);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "NO SUCH RECORD FOUND");
+        }
+               // TODO add your handling code here:
+    }//GEN-LAST:event_LoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,8 +270,9 @@ JOptionPane.showMessageDialog(null, "error "+e);
     private HashMap<String, Long> lookup = new HashMap<String, Long>();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton LoginButton;
+    private javax.swing.JButton VerifyButton;
+    private javax.swing.JTextField aadharNum;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -272,11 +280,7 @@ JOptionPane.showMessageDialog(null, "error "+e);
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtVerOTP;
     // End of variables declaration//GEN-END:variables
 }
