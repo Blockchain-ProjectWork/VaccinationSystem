@@ -185,7 +185,6 @@ public class NewJFrame extends javax.swing.JFrame {
         if(Integer.parseInt(txtVerOTP.getText())==OTP){
         JOptionPane.showMessageDialog(null, "you are login successfully");
         this.setVisible(false); //hide current jframe form
-        new home().setVisible(true); //open new jframe form having name home
 
         //NOTE: TO ADD NEW FORM (home)  REPEAT STEP 3
         }else{
