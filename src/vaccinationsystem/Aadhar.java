@@ -5,11 +5,20 @@
  */
 package vaccinationsystem;
 
+import java.util.HashMap;
+
 /**
  *
  * @author nehit
  */
 public class Aadhar {
-    int a;
+    private HashMap<String, Long> lookup = new HashMap<String, Long>();
+    
+    HashMap<String, Long> setData(){
+        lookup.put("Aditya", 917351600203L);
+        lookup.put("Aditya2", 917017997064L);
+        
+        return lookup;
+    }
     
 }
