@@ -35,9 +35,9 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
+        txtVerOTP = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -49,21 +49,21 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel3.setText("VERIFY OTP");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNameActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtPhoneActionPerformed(evt);
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtVerOTP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtVerOTPActionPerformed(evt);
             }
         });
 
@@ -92,15 +92,15 @@ public class NewJFrame extends javax.swing.JFrame {
                         .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
                             .add(jLabel2)
                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                            .add(jTextField2))
+                            .add(txtPhone))
                         .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
                             .add(jLabel1)
                             .add(72, 72, 72)
-                            .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 104, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                            .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 104, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jLabel3)
                         .add(38, 38, 38)
-                        .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(txtVerOTP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 109, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(83, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,17 +115,17 @@ public class NewJFrame extends javax.swing.JFrame {
                 .add(17, 17, 17)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(44, 44, 44)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(txtPhone, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jButton1)
                 .add(22, 22, 22)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(txtVerOTP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jButton2)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -151,23 +151,21 @@ public class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNameActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtPhoneActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtVerOTPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVerOTPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtVerOTPActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 if(Integer.parseInt(txtVerOTP.getText())==OTP){
 JOptionPane.showMessageDialog(null, "you are login successfully");
-this.setVisible(false); //hide current jframe form
-new home().setVisible(true); //open new jframe form having name home
  
 //NOTE: TO ADD NEW FORM (home)  REPEAT STEP 3
 }else{
@@ -177,37 +175,38 @@ JOptionPane.showMessageDialog(null, "wrong OTP");
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-        // Construct data
-        String apiKey = "apikey=" + "Gw6mB9i+ObQ-IltLpIrlSPZl8mTH3QPQPS00O13RpC";
-        Random rand = new Random();
-        OTP=rand.nextInt(999999);
-        String name = jTextField1.getText();
+// Construct data
+String apiKey = "apikey=" + "Gw6mB9i+ObQ-IltLpIrlSPZl8mTH3QPQPS00O13RpC";
+Random rand = new Random();
+OTP=rand.nextInt(999999);
+String name = txtName.getText();
+ 
+String message = "&amp;message=" + "Hey "+name+ " your OTP IS "+OTP;
+String sender = "&amp;sender=" + "your_sender_name";
+String numbers = "&amp;numbers=" +txtPhone.getText();
+ 
+// Send data
 
-        String message = "&amp;message=" + "Hey "+name+ " your OTP IS "+OTP;
-        String sender = "&amp;sender=" + "your_sender_name";
-        String numbers = "&amp;numbers=" +txtPhone.getText();
-
-        // Send data
-        HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
-        String data = apiKey + numbers + message + sender;
-        conn.setDoOutput(true);
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
-        conn.getOutputStream().write(data.getBytes("UTF-8"));
-        final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        final StringBuffer stringBuffer = new StringBuffer();
-        String line;
-        while ((line = rd.readLine()) != null) {
-        stringBuffer.append(line);
-        }
-        rd.close();
-        JOptionPane.showConfirmDialog(null, "OTP send Successfully");
-
-        //return stringBuffer.toString();
-        } catch (Exception e) {
-        JOptionPane.showMessageDialog(null,"Error SMS "+e);
-        //return "Error "+e;
-        JOptionPane.showMessageDialog(null, "error "+e);
+HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
+String data = apiKey + numbers + message + sender;
+conn.setDoOutput(true);
+conn.setRequestMethod("POST");
+conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
+conn.getOutputStream().write(data.getBytes("UTF-8"));
+final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+final StringBuffer stringBuffer = new StringBuffer();
+String line;
+while ((line = rd.readLine()) != null) {
+stringBuffer.append(line);
+}
+rd.close();
+JOptionPane.showMessageDialog(null, "OTP send Successfully");
+ 
+//return stringBuffer.toString();
+} catch (Exception e) {
+JOptionPane.showMessageDialog(null,"Error SMS "+e);
+//return "Error "+e;
+JOptionPane.showMessageDialog(null, "error "+e);
 
 
         }       // TODO add your handling code here:
@@ -258,9 +257,9 @@ JOptionPane.showMessageDialog(null, "wrong OTP");
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtVerOTP;
     // End of variables declaration//GEN-END:variables
 }
 
