@@ -20,14 +20,14 @@ public class Peer {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("> enter username & port # for this peer");  //enter username and port number
         String[] setupValues = bufferedReader.readLine().split(" "); // splitting the input
-        ServerThread serverThread = new ServerThread(setupValues[1]);
+        Server serverThread = new Server(setupValues[1]);
         serverThread.start();
         new Peer().updateListenToPeers(bufferedReader, setupValues[0], serverThread);
     }
  
     // The following method is basically to let you know which peer(port number) is recieving message from which port number
     
-    private void updateListenToPeers(BufferedReader bufferedReader, String username, ServerThread serverThread) throws Exception{
+    private void updateListenToPeers(BufferedReader bufferedReader, String username, Server serverThread) throws Exception{
         System.out.println("> enter(space seperated) computername:port# "); // Each user will have hostname and portnumber
         System.out.println(" peers to receive messages from, skip");
         String input = bufferedReader.readLine(); // Taking input 
@@ -52,7 +52,7 @@ public class Peer {
     }
    // The following method helps you to send messages to peers
     
-    private void communicate(BufferedReader bufferedReader, String username, ServerThread serverThread) {
+    private void communicate(BufferedReader bufferedReader, String username, Server serverThread) {
         try {
             System.out.println("> you can communicate (e to exit, c to change)");
             boolean flag = true;

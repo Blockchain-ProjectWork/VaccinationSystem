@@ -4,40 +4,29 @@
  * and open the template in the editor.
  */
 package vaccinationsystem;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.io.*;
 
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.util.HashSet;
-import java.util.Set;
 /**
  *
  * @author piyush
  */
 public class ServerThread extends Thread {
-   private ServerSocket serverSocket;
-   private Set<ServerThreadThread> serverThreadThreads = new HashSet<ServerThreadThread>(); // Set of ServerThreadThread
-    public ServerThread(String portNumb) throws IOException{
-        serverSocket = new ServerSocket(Integer.valueOf(portNumb)); // Initializing Server Socket 
-        
+    private Server server;
+    private Socket socket;
+    private PrintWriter printWriter;
+    public ServerThread(Socket socket, Server serverThread)  { // Initializing serverthread and socket 
+        this.server = serverThread;
+        this.socket = socket;
     }
-   
-   public void run(){
-   try {
-       while (true) {
-           ServerThreadThread serverThreadThread = new ServerThreadThread(serverSocket.accept(), this);
-           serverThreadThreads.add(serverThreadThread); // putting serverthreadthread into set 
-           serverThreadThread.start();
-       }
-   } catch (Exception e) {
-       e.printStackTrace();
-       
-   }
-   }
-   // Method to send Messages
-  void sendMessage(String message) {
-        try { serverThreadThreads.forEach(t-> t.getPrintWriter().println(message)); }
-        catch(Exception e) { e.printStackTrace();}
+    public void run() {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+            this.printWriter = new PrintWriter(socket.getOutputStream(), true);
+            while(true) server.sendMessage(bufferedReader.readLine());
+        } catch (Exception e) { server.getServerThreadThreads().remove(this); }
     }
-    public Set<ServerThreadThread> getServerThreadThreads() { return serverThreadThreads; } // Get method 
-   
+    public PrintWriter getPrintWriter() { return printWriter; }
+    
 }
