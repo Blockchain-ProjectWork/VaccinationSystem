@@ -16,7 +16,7 @@ import com.twilio.type.PhoneNumber;
 public class SendSMS {
     // Find your Account Sid and Auth Token at twilio.com/console
     public static final String ACCOUNT_SID = "AC0381ab57705eda660ced1eae4c403ea7";
-    public static final String AUTH_TOKEN = "54dc8f7d35c7c6159cff9afe551b3082";
+    public static final String AUTH_TOKEN = "48e7677a30d532bdb4542f1def84475a";
     public static final String MSID = "MGd8a7fa7af252e854209d7135ca6da2fc";
     public static final String fno = "+18184461125";
     public String send(String Pno, String OTP, String Name) {

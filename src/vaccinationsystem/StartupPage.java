@@ -5,25 +5,29 @@
  */
 package vaccinationsystem;
 
-import java.util.HashMap;
-
 /**
  *
- * @author dell
+ * @author nehit
  */
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.HashMap;
 import java.util.logging.Level; 
 import java.util.logging.Logger; 
 import java.util.Random;
+import java.util.concurrent.CountDownLatch;
 import javax.swing.JOptionPane;
-public class NewJFrame extends javax.swing.JFrame {
+public class StartupPage extends javax.swing.JFrame {
     int OTP;
     private final static Logger LOGGER =  
                 Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); 
-
     /** Creates new form NewJFrame */
-    public NewJFrame() {
+    private static Object lock = new Object();
+    
+    public StartupPage() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -58,6 +62,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("NAME");
 
@@ -121,9 +130,9 @@ public class NewJFrame extends javax.swing.JFrame {
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(VerifyButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(LoginButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(62, 62, 62))
+                    .add(LoginButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 76, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(VerifyButton))
+                .add(59, 59, 59))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -180,17 +189,17 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtVerOTPActionPerformed
 
     private void VerifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerifyButtonActionPerformed
-        if(Integer.parseInt(txtVerOTP.getText())==OTP){
+        if(OTP==Integer.parseInt(txtVerOTP.getText())){
             JOptionPane.showMessageDialog(null, "you are login successfully");
-
-        //NOTE: TO ADD NEW FORM (home)  REPEAT STEP 3
+            
         }else{
             JOptionPane.showMessageDialog(null, "wrong OTP");
+            System.exit(0);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_VerifyButtonActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        HashMap<String, Long> lookup = new Aadhar().setData();
+        HashMap<String, Long> lookup = new VerifyAadhar().setData();
         if(lookup.containsKey(aadharNum.getText())){
             LOGGER.log(Level.INFO, "INSIDE LOOKUP");
             Random rand = new Random();
@@ -212,10 +221,14 @@ public class NewJFrame extends javax.swing.JFrame {
                // TODO add your handling code here:
     }//GEN-LAST:event_LoginButtonActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void Startup() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -229,23 +242,53 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartupPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartupPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartupPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StartupPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
         
         
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        StartupPage st = new StartupPage();
+        st.setVisible(true);
+        
+        Thread t = new Thread() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                synchronized(lock) {
+                    while (st.isVisible())
+                        try {
+                            lock.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    System.out.println("Working now");
+                }
             }
+        };
+        t.start();
+        
+        st.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                synchronized (lock) {
+                    st.setVisible(false);
+                    lock.notify();
+                } //To change body of generated methods, choose Tools | Templates.
+            }
+            
         });
+        
+        try{
+            t.join();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
 

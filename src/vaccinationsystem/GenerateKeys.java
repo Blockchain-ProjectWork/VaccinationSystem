@@ -10,10 +10,7 @@ package vaccinationsystem;
  * @author aditya
  */
 import java.io.*;
-import java.security.KeyPairGenerator;
-import java.security.KeyPair;
-import java.security.PublicKey;
-import java.security.PrivateKey;
+import java.security.*;
 
 public class GenerateKeys {
     private KeyPairGenerator keyGen;
@@ -22,17 +19,18 @@ public class GenerateKeys {
     private PublicKey publicKey;
     
     public GenerateKeys(int keylength, String Algo) throws Exception {
+        SecureRandom random = SecureRandom.getInstance("SHA1PRNG", "SUN");
         this.keyGen = KeyPairGenerator.getInstance(Algo);
-        this.keyGen.initialize(keylength);
+        this.keyGen.initialize(512, random);
     }
     
-    public void KeyGenerator(){
+    public void KeyGenerator(String port){
         try{
             this.pair = this.keyGen.generateKeyPair();
             this.privateKey = pair.getPrivate();
             this.publicKey = pair.getPublic();
-            writeKey("KeyPair/publicKey", this.getPublicKey().getEncoded());
-            writeKey("KeyPair/privateKey", this.getPrivateKey().getEncoded());
+            writeKey("KeyPair/"+port+"/publicKey", this.getPublicKey().getEncoded());
+            writeKey("KeyPair/"+port+"/privateKey", this.getPrivateKey().getEncoded());
         }catch(Exception e){
             System.out.println(e.getMessage());
         }

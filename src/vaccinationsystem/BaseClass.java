@@ -16,8 +16,9 @@ public class BaseClass {
      */
     public static void main(String[] args) {
         try{
-            GenerateKeys g = new GenerateKeys(1024, "RSA");
-            g.KeyGenerator();
+            
+
+            //StartupPage sp = new StartupPage();
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
